@@ -10,7 +10,7 @@ class FRACTION{
 
   private:
    int numer,denom;
-   int gcd(int n,int m){
+   const int gcd(int n,int m)const{
      int gcd=1;
      for(int k=1;k<=n&&k<=m;k++){
        if(n%k==0&&m%k==0)gcd=k;
@@ -47,17 +47,17 @@ class FRACTION{
           FRACTION temp(-numer,denom);
           return temp;
       }
-      FRACTION &operator++(){//preincrement ++f1
+      const FRACTION &operator++(){//preincrement ++f1
         numer=numer+denom;
         //this->normalize();
         return *this;
       }
-      FRACTION &operator--(){//predecrement  --f1
+      const FRACTION &operator--(){//predecrement  --f1
         numer=numer-denom;
         //this->normalize();
         return *this;
       }
-      FRACTION& operator+=(const FRACTION& right){
+      const FRACTION& operator+=(const FRACTION& right){
         numer=numer*right.denom+denom*right.numer;
         denom=denom*right.denom;
         //normalize();
