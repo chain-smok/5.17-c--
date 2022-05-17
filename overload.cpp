@@ -34,32 +34,33 @@ class FRACTION{
       FRACTION():numer(0),denom(1){};
       FRACTION(int n,int d):numer(n),denom(d){}
       void print(){
+        this->normalize();
         cout<<numer<<"/"<<denom<<endl;
       }
 
 
-      const FRACTION operator+(){
+      const FRACTION operator+()const{
           FRACTION temp(numer,denom);
           return temp;
       }
-      const FRACTION operator-(){
+      const FRACTION operator-()const{
           FRACTION temp(-numer,denom);
           return temp;
       }
       FRACTION &operator++(){//preincrement ++f1
         numer=numer+denom;
-        this->normalize();
+        //this->normalize();
         return *this;
       }
       FRACTION &operator--(){//predecrement  --f1
         numer=numer-denom;
-        this->normalize();
+        //this->normalize();
         return *this;
       }
       FRACTION& operator+=(const FRACTION& right){
         numer=numer*right.denom+denom*right.numer;
         denom=denom*right.denom;
-        normalize();
+        //normalize();
         return *this;
       }
 
@@ -68,14 +69,16 @@ bool operator==(const FRACTION& left,FRACTION& right){
         return (left.numer*right.denom==right.numer*left.denom);
   }
 bool operator!=(const FRACTION& left,FRACTION& right){
-        return (left.numer*right.denom==right.numer*left.denom);
+        return (left.numer*right.denom!=right.numer*left.denom);
   }
 int main(){
-     FRACTION f1(1,2),f2(1,2),f3;
+     FRACTION f1(1,-2),f2(1,3),f3;
      f1.print();
      f2.print();
      if(f1==f2)cout<<"HO HO"<<endl;
+     if(f1!=f2)cout<<"HA HA"<<endl;
      f1+=f2;//f1=f1+f2
+     f1.print();
      ++f1;
      ++f1;
      f1.print();
