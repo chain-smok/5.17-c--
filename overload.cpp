@@ -1,6 +1,9 @@
 //a: void func(const int a);     做為參數使用，說明函數內是不能修改該參數的。
 //b: const int func();           做為返回值使用，說明函數的返回值是不能被修改的。
 //c: int func() const;           常數函數，說明函數是不能修改該類別中成員的值的，只能用於類別的成員函數中。
+
+//Fraction t
+//Fraction& *this=t(*this是t的別名)
 #include <bits/stdc++.h>
 #include <assert.h>
 using namespace std;
@@ -52,7 +55,7 @@ class FRACTION{
         //this->normalize();
         return *this;
       }
-      const FRACTION &operator--(){//predecrement  --f1
+      const FRACTION operator--(){//predecrement  --f1
         numer=numer-denom;
         //this->normalize();
         return *this;
